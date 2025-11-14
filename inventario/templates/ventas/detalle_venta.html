@@ -1,0 +1,33 @@
+<h1>Detalle de Venta: {{ object.codigo }}</h1>
+
+<p><strong>Cliente:</strong> {{ object.cliente }}</p>
+<p><strong>Fecha:</strong> {{ object.fecha }}</p>
+<p><strong>Total de la venta:</strong> {{ object.total }}</p>
+
+<h2>Items de la venta</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in object.items.all %}
+        <tr>
+            <td>{{ item.producto }}</td>
+            <td>{{ item.cantidad }}</td>
+            <td>{{ item.precio_unitario }}</td>
+            <td>{{ item.subtotal }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No hay items registrados para esta venta.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'ventas:lista_ventas' %}">Volver al listado de ventas</a>

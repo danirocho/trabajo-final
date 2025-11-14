@@ -1,0 +1,11 @@
+{% load crispy_forms_tags %}
+
+<h1>Editar Cliente</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit">Actualizar Cliente</button>
+</form>
+
+<a href="{% url 'lista_clientes' %}">Volver a la lista de clientes</a>

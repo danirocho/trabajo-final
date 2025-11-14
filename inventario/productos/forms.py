@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 # Importamos los modelos para los formularios basados en modelos
 from .models import Producto, MovimientoStock
 # Importamos las herramientas de Crispy Forms
-from crispy_forms.helper import FormHelper
+from crispy_forms.helper import FormHelper #esto no lo marcaba en la clase
 from crispy_forms.layout import Layout, Row, Column, Submit, Reset, ButtonHolder, Field, Div, HTML
 from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
 # Importamos nuestro helper base para no repetir código
@@ -148,9 +148,9 @@ class MovimientoStockForm(forms.ModelForm):
                     f"No hay suficiente stock. Disponible: {self.producto.stock}"
                 )
         return cantidad
-        
+     
 # -----------------------------------------------------------------------------
-# Formulario para ajustar el stock a un valor específico
+# Formulario para ajustar el stock a un valor específico(termina la clase)
 # -----------------------------------------------------------------------------
 class AjusteStockForm(forms.Form):
     """

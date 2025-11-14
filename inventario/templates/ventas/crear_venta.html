@@ -1,0 +1,16 @@
+{% load crispy_forms_tags %}
+
+
+<h1>Registrar Venta</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ venta_form|crispy }}
+    {{ formset.management_form }}
+    {% for form in formset %}
+        {{ form|crispy }}
+    {% endfor %}
+    <button type="submit">Guardar Venta</button>
+</form>
+
+<a href="{% url 'ventas:lista_ventas' %}">Volver al listado de ventas</a>
