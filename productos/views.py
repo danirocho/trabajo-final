@@ -54,7 +54,7 @@ class ProductoDetailView(DetailView):
         return context
     
 
-class ProductoCreateView(CreateView):
+class ProductoCreateView(CreateView): #aca se pondra un mixing del login required una vez implementemos autenticación
     """Vista para crear un nuevo producto."""
     model = Producto
     form_class = ProductoForm
@@ -72,7 +72,7 @@ class ProductoCreateView(CreateView):
                 cantidad=form.cleaned_data["stock"],
                 motivo = "Stock inicial",
                 fecha = timezone.now(),
-                usuario = self.request.user.username if self.request.user.is_authenticated else "Sistema"
+                usuario = self.request.user.username if self.request.user.is_authenticated else "Sistema" #esto hay que sacarlo una vez implementemos autenticación
             )
 
         messages.success(self.request, "Producto creado exitosamente")
@@ -121,13 +121,13 @@ class MovimientoStockCreateView(CreateView):
         """Añade la instancia del producto al contexto de la plantilla."""
         context = super().get_context_data(**kwargs)
         context["producto"] = get_object_or_404(Producto, pk=self.kwargs["pk"])
-        return context
+        return context #esto no aparece en el video pero es necesario para que funcione el template
 
     def form_valid(self, form):
         """Maneja la lógica de negocio para actualizar el stock."""
         movimiento = form.save(commit=False)
         movimiento.producto = get_object_or_404(Producto, pk=self.kwargs["pk"])
-        movimiento.usuario = self.request.user.username if self.request.user.is_authenticated else "Sistema"
+        movimiento.usuario = self.request.user.username if self.request.user.is_authenticated else "Sistema" # tambien se modifica esto una vez implementemos autenticación
 
         if movimiento.tipo == "entrada":
             movimiento.producto.stock += movimiento.cantidad
@@ -161,7 +161,7 @@ class AjusteStockView(FormView):
         """Añade la instancia del producto al contexto de la plantilla."""
         context = super().get_context_data(**kwargs)
         context["producto"] = get_object_or_404(Producto, pk=self.kwargs["pk"])
-        return context
+        return context #esto no aparece en el video pero es necesario para que funcione el template
 
     def form_valid(self, form):
         """
