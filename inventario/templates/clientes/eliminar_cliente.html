@@ -1,9 +1,17 @@
-<h1>Eliminar Cliente</h1>
+{% extends 'productos/base.html' %}
 
-<p>¿Estás seguro que quieres eliminar a {{ object.nombre }} {{ object.apellido }}?</p>
+{% block title %}Eliminar Cliente{% endblock %}
+{% block header %}Eliminar Cliente{% endblock %}
 
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Eliminar</button>
-    <a href="{% url 'lista_clientes' %}">Cancelar</a>
-</form>
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <p class="mb-3">¿Estás seguro que quieres eliminar a <strong>{{ object.nombre }} {{ object.apellido }}</strong>?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Eliminar</button>
+            <a href="{% url 'lista_clientes' %}" class="btn btn-secondary ml-2">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

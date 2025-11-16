@@ -1,0 +1,24 @@
+{% extends 'productos/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Login{% endblock %}
+{% block header %}Iniciar sesión{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" action="{% url 'account_login' %}">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="form-group mt-3">
+                        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                        <a href="/" class="btn btn-secondary">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -43,6 +43,20 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        {% if request.user.is_authenticated and perms.clientes.view_cliente %}
+                        <a class="nav-link" href="{% url 'lista_clientes' %}">
+                            <i class="fas fa-users"></i> Clientes
+                        </a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        {% if request.user.is_authenticated and perms.ventas.view_venta %}
+                        <a class="nav-link" href="{% url 'ventas:lista_ventas' %}">
+                            <i class="fas fa-cash-register"></i> Ventas
+                        </a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'productos:producto_create' %}">
                             <i class="fas fa-plus-circle"></i> Nuevo Producto
                         </a>
@@ -52,6 +66,22 @@
                             <i class="fas fa-exclamation-triangle"></i> Stock Bajo
                         </a>
                     </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userMenu" role="button" data-toggle="dropdown">
+                                <i class="fas fa-user"></i> {{ request.user.username }}
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
+                                <a class="dropdown-item" href="{% url 'account_logout' %}">Cerrar sesión</a>
+                            </div>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_login' %}"><i class="fas fa-sign-in-alt"></i> Iniciar sesión</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>

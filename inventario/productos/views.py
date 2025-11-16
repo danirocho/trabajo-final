@@ -4,6 +4,7 @@
 # -----------------------------------------------------------------------------
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView, FormView
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect
@@ -13,16 +14,54 @@ from .models import Producto, MovimientoStock
 from .forms import ProductoForm, MovimientoStockForm, AjusteStockForm
 
 
-class ProductoListView(ListView):
-    """Muestra una lista de todos los productos."""
+# ============================================================================
+# Mixin personalizado para validar permiso + grupo 'stock'
+# Solo se aplica a las vistas de productos (inventario)
+# ============================================================================
+class StockGroupPermissionMixin(PermissionRequiredMixin):
+    """
+    Valida que el usuario tenga el permiso requerido Y pertenezca al grupo 'stock'.
+    Esta mixin se usa SOLO en las vistas de productos/inventario.
+    No afecta a las vistas de ventas u otros apps.
+    """
+    def has_permission(self):
+        """
+        Verifica que el usuario está autenticado, tiene el permiso requerido,
+        Y pertenece al grupo 'stock'.
+        Los superusers tienen acceso automático (sin necesidad de grupo).
+        """
+        # Si es superuser, permite acceso automático
+        if self.request.user.is_superuser:
+            return True
+        
+        # Primero, valida el permiso estándar de Django
+        has_perm = super().has_permission()
+        
+        # Luego, valida que pertenezca al grupo 'stock'
+        user_in_stock_group = self.request.user.groups.filter(name='stock').exists()
+        
+        return has_perm and user_in_stock_group
+
+
+
+class ProductoListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+    """Muestra una lista de todos los productos - Accesible a cualquier usuario autenticado."""
+    permission_required = 'productos.view_producto'
     model = Producto
-    template_name = "producto/producto_list.html"
-    context_object_name = "producto"
+    template_name = "productos/producto_list.html"
+    context_object_name = "productos"
+    paginate_by = 10
 
     def get_queryset(self):
         """Sobrescribe para permitir el filtrado por stock bajo."""
         queryset = super().get_queryset()
 
+        # Filtro por nombre (q)
+        q = self.request.GET.get('q')
+        if q:
+            queryset = queryset.filter(nombre__icontains=q)
+
+        # Filtra por stock bajo si se solicita
         stock_bajo = self.request.GET.get('stock_bajo')
         if stock_bajo:
             # Filtra en la base de datos usando F() para eficiencia
@@ -36,11 +75,19 @@ class ProductoListView(ListView):
         """Añade una variable al contexto para saber si se está filtrando por stock bajo."""
         context = super().get_context_data(**kwargs)
         context["stock_bajo"] = self.request.GET.get("stock_bajo")
+        context["q"] = self.request.GET.get("q", "")
+
+        # Mantener parámetros de consulta para paginación
+        params = self.request.GET.copy()
+        if 'page' in params:
+            params.pop('page')
+        context['querystring'] = params.urlencode()
         return context
     
 
-class ProductoDetailView(DetailView):
-    """Muestra los detalles de un producto específico."""
+class ProductoDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
+    """Muestra los detalles de un producto específico - Accesible a cualquier usuario autenticado."""
+    permission_required = 'productos.view_producto'
     model = Producto
     template_name = "productos/producto_detail.html"
     context_object_name = "producto"
@@ -54,8 +101,9 @@ class ProductoDetailView(DetailView):
         return context
     
 
-class ProductoCreateView(CreateView): #aca se pondra un mixing del login required una vez implementemos autenticación
+class ProductoCreateView(LoginRequiredMixin, StockGroupPermissionMixin, CreateView):
     """Vista para crear un nuevo producto."""
+    permission_required = 'productos.add_producto'
     model = Producto
     form_class = ProductoForm
     template_name = "productos/producto_form.html"
@@ -79,12 +127,13 @@ class ProductoCreateView(CreateView): #aca se pondra un mixing del login require
         return response
     
 
-class ProductoUpdateView(UpdateView):
+class ProductoUpdateView(LoginRequiredMixin, StockGroupPermissionMixin, UpdateView):
     """Vista para actualizar un producto existente."""
+    permission_required = 'productos.change_producto'
     model = Producto
-    template_name = "producto/producto_form.html"
+    template_name = "productos/producto_form.html"
     form_class = ProductoForm
-    success_url = reverse_lazy("producto:producto_list")
+    success_url = reverse_lazy("productos:producto_list")
 
     def form_valid(self, form):
         """Sobrescribe para mostrar un mensaje de éxito."""
@@ -93,11 +142,12 @@ class ProductoUpdateView(UpdateView):
         return response
     
 
-class ProductoDeleteView(DeleteView):
+class ProductoDeleteView(LoginRequiredMixin, StockGroupPermissionMixin, DeleteView):
     """Vista para eliminar un producto."""
+    permission_required = 'productos.delete_producto'
     model = Producto
     template_name = "productos/producto_confirm_delete.html"
-    success_url = reverse_lazy("producto:producto_list")
+    success_url = reverse_lazy("productos:producto_list")
 
     def delete(self, request, *args, **kwargs):
         """Sobrescribe para mostrar un mensaje de éxito después de eliminar."""
@@ -105,8 +155,9 @@ class ProductoDeleteView(DeleteView):
         return super().delete(request, *args, **kwargs)
     
 
-class MovimientoStockCreateView(CreateView):
+class MovimientoStockCreateView(LoginRequiredMixin, StockGroupPermissionMixin, CreateView):
     """Vista para registrar un nuevo movimiento de stock."""
+    permission_required = 'productos.add_movimientostock'
     model = MovimientoStock
     template_name = "productos/movimiento_form.html"
     form_class = MovimientoStockForm
@@ -146,8 +197,9 @@ class MovimientoStockCreateView(CreateView):
         messages.success(self.request, f"Movimiento de stock registrado exitosamente")
         return redirect("productos:producto_detail", pk=movimiento.producto.pk)       
 
-class AjusteStockView(FormView):
+class AjusteStockView(LoginRequiredMixin, StockGroupPermissionMixin, FormView):
     """Vista para ajustar el stock de un producto a un valor específico."""
+    permission_required = 'productos.change_producto'
     form_class = AjusteStockForm
     template_name = "productos/ajuste_stock_form.html"
 
@@ -194,8 +246,9 @@ class AjusteStockView(FormView):
         return redirect("productos:producto_detail", pk=producto.pk)
 
 
-class StockBajoListView(ListView):
-    """Muestra una lista filtrada solo para productos con stock bajo."""
+class StockBajoListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+    """Muestra una lista filtrada solo para productos con stock bajo - Accesible a cualquier usuario autenticado."""
+    permission_required = 'productos.view_producto'
     model = Producto
     template_name = "productos/stock_bajo_list.html"
     context_object_name = "productos"

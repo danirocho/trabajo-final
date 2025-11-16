@@ -1,16 +1,24 @@
+{% extends 'productos/base.html' %}
 {% load crispy_forms_tags %}
 
+{% block title %}Registrar Venta{% endblock %}
+{% block header %}Registrar Venta{% endblock %}
 
-<h1>Registrar Venta</h1>
-
-<form method="post">
-    {% csrf_token %}
-    {{ venta_form|crispy }}
-    {{ formset.management_form }}
-    {% for form in formset %}
-        {{ form|crispy }}
-    {% endfor %}
-    <button type="submit">Guardar Venta</button>
-</form>
-
-<a href="{% url 'ventas:lista_ventas' %}">Volver al listado de ventas</a>
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            {{ venta_form|crispy }}
+            {{ formset.management_form }}
+            {% for form in formset %}
+                {{ form|crispy }}
+            {% endfor %}
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-success"><i class="fas fa-check"></i> Guardar Venta</button>
+                <a href="{% url 'ventas:lista_ventas' %}" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

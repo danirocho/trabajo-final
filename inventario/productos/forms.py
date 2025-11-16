@@ -22,7 +22,7 @@ class ProductoForm(forms.ModelForm):
         # Vinculamos este formulario al modelo Producto
         model = Producto
         # Especificamos los campos que se incluirán en el formulario
-        fields = ["nombre", "descripcion", "precio", "stock", "stock_minimo", "imagen"]
+        fields = ["nombre", "sku", "descripcion", "precio", "stock", "stock_minimo", "imagen"]
         # Usamos widgets para personalizar la apariencia de los campos HTML
         widgets = {
             "descripcion": forms.Textarea(attrs={"rows": 3}),  # Cambia el campo de texto a un área de texto más grande
@@ -45,6 +45,7 @@ class ProductoForm(forms.ModelForm):
         self.helper.layout = Layout(
             # Un 'Field' representa un campo de formulario estándar
             Field("nombre"),
+            Field("sku"),
             Field("descripcion"),
             # 'PrependedText' añade un prefijo (ej: el símbolo de $) al campo de precio
             PrependedText("precio", "$", placeholder="0.00"),

@@ -1,11 +1,20 @@
+{% extends 'productos/base.html' %}
 {% load crispy_forms_tags %}
 
-<h1>Editar Cliente</h1>
+{% block title %}Editar Cliente{% endblock %}
+{% block header %}Editar Cliente{% endblock %}
 
-<form method="post">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type="submit">Actualizar Cliente</button>
-</form>
-
-<a href="{% url 'lista_clientes' %}">Volver a la lista de clientes</a>
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Actualizar</button>
+                <a href="{% url 'lista_clientes' %}" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

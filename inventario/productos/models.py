@@ -24,6 +24,7 @@ class Producto(models.Model):
     precio = models.DecimalField("Precio", max_digits=10, decimal_places=2)
     stock = models.IntegerField(default=0)
     stock_minimo = models.IntegerField(default=5, verbose_name="Stock Minimo")
+    sku = models.CharField("SKU", max_length=50, unique=True, blank=True, null=True)
     imagen = models.ImageField(
         "Imagen", 
         upload_to=get_image_path, 

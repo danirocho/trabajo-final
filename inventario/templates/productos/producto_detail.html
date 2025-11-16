@@ -1,0 +1,162 @@
+{% extends 'productos/base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}{{ producto.nombre }} - Detalle{% endblock %}
+{% block header %}{{ producto.nombre }}{% endblock %}
+
+{% block extra_buttons %}
+<div>
+    <a href="{% url 'productos:producto_update' producto.pk %}" class="btn btn-primary">
+        <i class="fas fa-edit"></i> Editar
+    </a>
+    <a href="{% url 'productos:movimiento_create' producto.pk %}" class="btn btn-success">
+        <i class="fas fa-exchange-alt"></i> Movimiento Stock
+    </a>
+    <a href="{% url 'productos:producto_delete' producto.pk %}" class="btn btn-danger">
+        <i class="fas fa-trash"></i> Eliminar
+    </a>
+    <a href="{% url 'productos:producto_list' %}" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i> Volver
+    </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- Información del Producto -->
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0"><i class="fas fa-box"></i> Información del Producto</h5>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4">SKU:</dt>
+                    <dd class="col-sm-8"><code>{{ producto.sku }}</code></dd>
+
+                    <dt class="col-sm-4">Nombre:</dt>
+                    <dd class="col-sm-8">{{ producto.nombre }}</dd>
+
+                    <dt class="col-sm-4">Descripción:</dt>
+                    <dd class="col-sm-8">{{ producto.descripcion }}</dd>
+
+                    <dt class="col-sm-4">Precio:</dt>
+                    <dd class="col-sm-8"><strong class="text-success">${{ producto.precio }}</strong></dd>
+
+                    <dt class="col-sm-4">Stock Actual:</dt>
+                    <dd class="col-sm-8">
+                        {{ producto.stock }}
+                        {% if producto.necesita_reposicion %}
+                            <span class="badge badge-warning ml-2">¡BAJO!</span>
+                        {% else %}
+                            <span class="badge badge-success ml-2">OK</span>
+                        {% endif %}
+                    </dd>
+
+                    <dt class="col-sm-4">Stock Mínimo:</dt>
+                    <dd class="col-sm-8">{{ producto.stock_minimo }}</dd>
+
+                    <dt class="col-sm-4">Creado:</dt>
+                    <dd class="col-sm-8">{{ producto.fecha_creacion|date:"d/m/Y H:i" }}</dd>
+
+                    <dt class="col-sm-4">Actualizado:</dt>
+                    <dd class="col-sm-8">{{ producto.fecha_actualizacion|date:"d/m/Y H:i" }}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <!-- Imagen del Producto -->
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0"><i class="fas fa-image"></i> Imagen</h5>
+            </div>
+            <div class="card-body text-center">
+                {% if producto.imagen %}
+                    <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="img-fluid rounded" style="max-height: 300px;">
+                {% else %}
+                    <div class="bg-light rounded d-flex align-items-center justify-content-center" style="height: 300px;">
+                        <div class="text-muted">
+                            <i class="fas fa-image" style="font-size: 3rem;"></i>
+                            <p class="mt-2">Sin imagen</p>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Historial de Movimientos -->
+<div class="card">
+    <div class="card-header bg-dark text-white">
+        <h5 class="mb-0"><i class="fas fa-history"></i> Últimos Movimientos de Stock</h5>
+    </div>
+    <div class="card-body">
+        {% if movimientos %}
+        <div class="table-responsive">
+            <table class="table table-sm table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Tipo</th>
+                        <th>Cantidad</th>
+                        <th>Motivo</th>
+                        <th>Usuario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for movimiento in movimientos %}
+                    <tr>
+                        <td>{{ movimiento.fecha|date:"d/m/Y H:i" }}</td>
+                        <td>
+                            {% if movimiento.tipo == 'entrada' %}
+                                <span class="badge badge-success">{{ movimiento.get_tipo_display }}</span>
+                            {% elif movimiento.tipo == 'salida' %}
+                                <span class="badge badge-warning">{{ movimiento.get_tipo_display }}</span>
+                            {% else %}
+                                <span class="badge badge-info">{{ movimiento.get_tipo_display }}</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ movimiento.cantidad }}</td>
+                        <td>{{ movimiento.motivo }}</td>
+                        <td>{{ movimiento.usuario }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-info mb-0">
+            <i class="fas fa-info-circle"></i> No hay movimientos registrados para este producto.
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Form de Ajuste de Stock (Modal o inline) -->
+<div class="card mt-4">
+    <div class="card-header bg-dark text-white">
+        <h5 class="mb-0"><i class="fas fa-sliders-h"></i> Ajuste Rápido de Stock</h5>
+    </div>
+    <div class="card-body">
+        <p class="text-muted">Use este formulario para ajustar el stock a un valor específico.</p>
+    <form method="post" action="{% url 'productos:ajustar_stock' producto.pk %}" class="form-inline">
+            {% csrf_token %}
+            <div class="form-group mr-2">
+                <label for="id_cantidad" class="mr-2">Nueva Cantidad:</label>
+                <input type="number" id="id_cantidad" name="cantidad" class="form-control" value="{{ producto.stock }}" min="0" required>
+            </div>
+            <div class="form-group mr-2">
+                <label for="id_motivo" class="mr-2">Motivo:</label>
+                <input type="text" id="id_motivo" name="motivo" class="form-control" placeholder="Opcional">
+            </div>
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-check"></i> Ajustar
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

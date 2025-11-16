@@ -3,6 +3,7 @@ from .models import Venta, ItemVenta
 from .forms import VentaForm, ItemVentaFormSet
 from productos.models import Producto
 from django.views.generic import ListView, DetailView
+from django.db.models import Q
 
 def crear_venta(request):
     if request.method == 'POST':
@@ -39,6 +40,17 @@ def crear_venta(request):
 class VentaListView(ListView):
     model = Venta
     template_name = 'ventas/lista_ventas.html'
+    context_object_name = 'ventas'
+    paginate_by = 10
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        q = self.request.GET.get('q')
+        if q:
+            queryset = queryset.filter(
+                Q(codigo__icontains=q) | Q(cliente__nombre__icontains=q) | Q(cliente__apellido__icontains=q)
+            )
+        return queryset
     
 class VentaDetailView(DetailView):
     model = Venta

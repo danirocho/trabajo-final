@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.sites',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -43,11 +44,16 @@ INSTALLED_APPS = [
     'productos',
     'clientes',
     'ventas',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # allauth middleware required for account handling
+    'allauth.account.middleware.AccountMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -140,3 +146,18 @@ BOOTSTRAP4 = {
     'error_css_class' : 'is-invalid',
     'success_css_class': 'is-valid',
 }
+
+# django-allauth settings
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SITE_ID = 1
+
+# Disable registration via allauth (login only)
+ACCOUNT_ALLOW_REGISTRATION = False
+
+# Redirects
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'account_login'
