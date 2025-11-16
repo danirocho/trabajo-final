@@ -15,7 +15,7 @@ class ClienteListView(ListView):
         q = self.request.GET.get('q')
         if q:
             queryset = queryset.filter(
-                Q(nombre__icontains=q) | Q(apellido__icontains=q) | Q(numero_documento__icontains=q)
+                Q(nombre__icontains=q) | Q(apellido__icontains=q) | Q(documento__icontains=q)
             )
         return queryset
 
