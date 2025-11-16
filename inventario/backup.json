@@ -1,0 +1,1634 @@
+[
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "productos",
+    "model": "movimientostock"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "productos",
+    "model": "producto"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "clientes",
+    "model": "cliente"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "ventas",
+    "model": "itemventa"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "ventas",
+    "model": "venta"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "sites",
+    "model": "site"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "account",
+    "model": "emailaddress"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "account",
+    "model": "emailconfirmation"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "socialaccount",
+    "model": "socialaccount"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "socialaccount",
+    "model": "socialapp"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "socialaccount",
+    "model": "socialtoken"
+  }
+},
+{
+  "model": "sites.site",
+  "fields": {
+    "domain": "example.com",
+    "name": "example.com"
+  }
+},
+{
+  "model": "productos.producto",
+  "pk": 2,
+  "fields": {
+    "nombre": "canela",
+    "descripcion": "rico",
+    "precio": "10000.00",
+    "stock": 7,
+    "stock_minimo": 5,
+    "sku": "5",
+    "imagen": "",
+    "fecha_creacion": "2025-11-16T13:03:59.564Z",
+    "fecha_actualizacion": "2025-11-16T16:52:57.017Z"
+  }
+},
+{
+  "model": "productos.producto",
+  "pk": 3,
+  "fields": {
+    "nombre": "flor",
+    "descripcion": "bella",
+    "precio": "50000.00",
+    "stock": 56,
+    "stock_minimo": 5,
+    "sku": "4",
+    "imagen": "",
+    "fecha_creacion": "2025-11-16T13:04:30.610Z",
+    "fecha_actualizacion": "2025-11-16T13:04:30.610Z"
+  }
+},
+{
+  "model": "productos.producto",
+  "pk": 4,
+  "fields": {
+    "nombre": "canela",
+    "descripcion": "rico",
+    "precio": "10000.00",
+    "stock": 25,
+    "stock_minimo": 5,
+    "sku": "7",
+    "imagen": "",
+    "fecha_creacion": "2025-11-16T13:19:41.505Z",
+    "fecha_actualizacion": "2025-11-16T16:53:34.723Z"
+  }
+},
+{
+  "model": "productos.producto",
+  "pk": 5,
+  "fields": {
+    "nombre": "botella sport",
+    "descripcion": "500ml",
+    "precio": "7800.00",
+    "stock": 7,
+    "stock_minimo": 5,
+    "sku": "8",
+    "imagen": "",
+    "fecha_creacion": "2025-11-16T13:57:43.502Z",
+    "fecha_actualizacion": "2025-11-16T16:56:08.634Z"
+  }
+},
+{
+  "model": "productos.movimientostock",
+  "pk": 2,
+  "fields": {
+    "producto": 2,
+    "tipo": "entrada",
+    "cantidad": 25,
+    "motivo": "Stock inicial",
+    "fecha": "2025-11-16T13:03:59.570Z",
+    "usuario": "Sistema"
+  }
+},
+{
+  "model": "productos.movimientostock",
+  "pk": 3,
+  "fields": {
+    "producto": 3,
+    "tipo": "entrada",
+    "cantidad": 56,
+    "motivo": "Stock inicial",
+    "fecha": "2025-11-16T13:04:30.617Z",
+    "usuario": "Sistema"
+  }
+},
+{
+  "model": "productos.movimientostock",
+  "pk": 8,
+  "fields": {
+    "producto": 4,
+    "tipo": "entrada",
+    "cantidad": 35,
+    "motivo": "Stock inicial",
+    "fecha": "2025-11-16T13:19:41.510Z",
+    "usuario": "Sistema"
+  }
+},
+{
+  "model": "productos.movimientostock",
+  "pk": 9,
+  "fields": {
+    "producto": 5,
+    "tipo": "entrada",
+    "cantidad": 30,
+    "motivo": "Stock inicial",
+    "fecha": "2025-11-16T13:57:43.509Z",
+    "usuario": "stocker"
+  }
+},
+{
+  "model": "productos.movimientostock",
+  "pk": 10,
+  "fields": {
+    "producto": 5,
+    "tipo": "entrada",
+    "cantidad": 70,
+    "motivo": null,
+    "fecha": "2025-11-16T16:56:08.633Z",
+    "usuario": "stocker"
+  }
+},
+{
+  "model": "clientes.cliente",
+  "pk": 1,
+  "fields": {
+    "nombre": "daniel",
+    "apellido": "chamaco",
+    "documento": "45153438",
+    "email": "dandwidqn@gmail.com",
+    "telefono": "3512516378",
+    "direccion": "calle evita 458"
+  }
+},
+{
+  "model": "clientes.cliente",
+  "pk": 3,
+  "fields": {
+    "nombre": "rogrigo",
+    "apellido": "figaro",
+    "documento": "45153439",
+    "email": "danieifefn@gmail.con",
+    "telefono": "3512516378",
+    "direccion": ""
+  }
+},
+{
+  "model": "clientes.cliente",
+  "pk": 4,
+  "fields": {
+    "nombre": "jenifer",
+    "apellido": "ayaaa",
+    "documento": "49879846",
+    "email": "jenidadfafc@gmail.com",
+    "telefono": "789465132",
+    "direccion": ""
+  }
+},
+{
+  "model": "ventas.venta",
+  "pk": 1,
+  "fields": {
+    "codigo": "dada",
+    "cliente": 1,
+    "fecha": "2025-11-14",
+    "total": "40.00"
+  }
+},
+{
+  "model": "ventas.venta",
+  "pk": 2,
+  "fields": {
+    "codigo": "4642613",
+    "cliente": 1,
+    "fecha": "2025-11-16",
+    "total": "117000.00"
+  }
+},
+{
+  "model": "ventas.venta",
+  "pk": 3,
+  "fields": {
+    "codigo": "4561312",
+    "cliente": 4,
+    "fecha": "2025-11-16",
+    "total": "180000.00"
+  }
+},
+{
+  "model": "ventas.venta",
+  "pk": 4,
+  "fields": {
+    "codigo": "798456123",
+    "cliente": 3,
+    "fecha": "2025-11-16",
+    "total": "100000.00"
+  }
+},
+{
+  "model": "ventas.venta",
+  "pk": 5,
+  "fields": {
+    "codigo": "7/77",
+    "cliente": 1,
+    "fecha": "2025-11-16",
+    "total": "1560.00"
+  }
+},
+{
+  "model": "ventas.itemventa",
+  "pk": 2,
+  "fields": {
+    "venta": 2,
+    "producto": 5,
+    "cantidad": 15,
+    "precio_unitario": "7800.00",
+    "subtotal": "117000.00"
+  }
+},
+{
+  "model": "ventas.itemventa",
+  "pk": 3,
+  "fields": {
+    "venta": 3,
+    "producto": 2,
+    "cantidad": 18,
+    "precio_unitario": "10000.00",
+    "subtotal": "180000.00"
+  }
+},
+{
+  "model": "ventas.itemventa",
+  "pk": 4,
+  "fields": {
+    "venta": 4,
+    "producto": 4,
+    "cantidad": 10,
+    "precio_unitario": "10000.00",
+    "subtotal": "100000.00"
+  }
+},
+{
+  "model": "ventas.itemventa",
+  "pk": 5,
+  "fields": {
+    "venta": 5,
+    "producto": 5,
+    "cantidad": 78,
+    "precio_unitario": "20.00",
+    "subtotal": "1560.00"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add Movimiento de Stock",
+    "content_type": [
+      "productos",
+      "movimientostock"
+    ],
+    "codename": "add_movimientostock"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change Movimiento de Stock",
+    "content_type": [
+      "productos",
+      "movimientostock"
+    ],
+    "codename": "change_movimientostock"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete Movimiento de Stock",
+    "content_type": [
+      "productos",
+      "movimientostock"
+    ],
+    "codename": "delete_movimientostock"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view Movimiento de Stock",
+    "content_type": [
+      "productos",
+      "movimientostock"
+    ],
+    "codename": "view_movimientostock"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add Producto",
+    "content_type": [
+      "productos",
+      "producto"
+    ],
+    "codename": "add_producto"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change Producto",
+    "content_type": [
+      "productos",
+      "producto"
+    ],
+    "codename": "change_producto"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete Producto",
+    "content_type": [
+      "productos",
+      "producto"
+    ],
+    "codename": "delete_producto"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view Producto",
+    "content_type": [
+      "productos",
+      "producto"
+    ],
+    "codename": "view_producto"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add cliente",
+    "content_type": [
+      "clientes",
+      "cliente"
+    ],
+    "codename": "add_cliente"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change cliente",
+    "content_type": [
+      "clientes",
+      "cliente"
+    ],
+    "codename": "change_cliente"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete cliente",
+    "content_type": [
+      "clientes",
+      "cliente"
+    ],
+    "codename": "delete_cliente"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view cliente",
+    "content_type": [
+      "clientes",
+      "cliente"
+    ],
+    "codename": "view_cliente"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add item venta",
+    "content_type": [
+      "ventas",
+      "itemventa"
+    ],
+    "codename": "add_itemventa"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change item venta",
+    "content_type": [
+      "ventas",
+      "itemventa"
+    ],
+    "codename": "change_itemventa"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete item venta",
+    "content_type": [
+      "ventas",
+      "itemventa"
+    ],
+    "codename": "delete_itemventa"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view item venta",
+    "content_type": [
+      "ventas",
+      "itemventa"
+    ],
+    "codename": "view_itemventa"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add venta",
+    "content_type": [
+      "ventas",
+      "venta"
+    ],
+    "codename": "add_venta"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change venta",
+    "content_type": [
+      "ventas",
+      "venta"
+    ],
+    "codename": "change_venta"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete venta",
+    "content_type": [
+      "ventas",
+      "venta"
+    ],
+    "codename": "delete_venta"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view venta",
+    "content_type": [
+      "ventas",
+      "venta"
+    ],
+    "codename": "view_venta"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add site",
+    "content_type": [
+      "sites",
+      "site"
+    ],
+    "codename": "add_site"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change site",
+    "content_type": [
+      "sites",
+      "site"
+    ],
+    "codename": "change_site"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete site",
+    "content_type": [
+      "sites",
+      "site"
+    ],
+    "codename": "delete_site"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view site",
+    "content_type": [
+      "sites",
+      "site"
+    ],
+    "codename": "view_site"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add email address",
+    "content_type": [
+      "account",
+      "emailaddress"
+    ],
+    "codename": "add_emailaddress"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change email address",
+    "content_type": [
+      "account",
+      "emailaddress"
+    ],
+    "codename": "change_emailaddress"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete email address",
+    "content_type": [
+      "account",
+      "emailaddress"
+    ],
+    "codename": "delete_emailaddress"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view email address",
+    "content_type": [
+      "account",
+      "emailaddress"
+    ],
+    "codename": "view_emailaddress"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add email confirmation",
+    "content_type": [
+      "account",
+      "emailconfirmation"
+    ],
+    "codename": "add_emailconfirmation"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change email confirmation",
+    "content_type": [
+      "account",
+      "emailconfirmation"
+    ],
+    "codename": "change_emailconfirmation"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete email confirmation",
+    "content_type": [
+      "account",
+      "emailconfirmation"
+    ],
+    "codename": "delete_emailconfirmation"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view email confirmation",
+    "content_type": [
+      "account",
+      "emailconfirmation"
+    ],
+    "codename": "view_emailconfirmation"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add social account",
+    "content_type": [
+      "socialaccount",
+      "socialaccount"
+    ],
+    "codename": "add_socialaccount"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change social account",
+    "content_type": [
+      "socialaccount",
+      "socialaccount"
+    ],
+    "codename": "change_socialaccount"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete social account",
+    "content_type": [
+      "socialaccount",
+      "socialaccount"
+    ],
+    "codename": "delete_socialaccount"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view social account",
+    "content_type": [
+      "socialaccount",
+      "socialaccount"
+    ],
+    "codename": "view_socialaccount"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add social application",
+    "content_type": [
+      "socialaccount",
+      "socialapp"
+    ],
+    "codename": "add_socialapp"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change social application",
+    "content_type": [
+      "socialaccount",
+      "socialapp"
+    ],
+    "codename": "change_socialapp"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete social application",
+    "content_type": [
+      "socialaccount",
+      "socialapp"
+    ],
+    "codename": "delete_socialapp"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view social application",
+    "content_type": [
+      "socialaccount",
+      "socialapp"
+    ],
+    "codename": "view_socialapp"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add social application token",
+    "content_type": [
+      "socialaccount",
+      "socialtoken"
+    ],
+    "codename": "add_socialtoken"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change social application token",
+    "content_type": [
+      "socialaccount",
+      "socialtoken"
+    ],
+    "codename": "change_socialtoken"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete social application token",
+    "content_type": [
+      "socialaccount",
+      "socialtoken"
+    ],
+    "codename": "delete_socialtoken"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view social application token",
+    "content_type": [
+      "socialaccount",
+      "socialtoken"
+    ],
+    "codename": "view_socialtoken"
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "administradores",
+    "permissions": [
+      [
+        "add_emailaddress",
+        "account",
+        "emailaddress"
+      ],
+      [
+        "change_emailaddress",
+        "account",
+        "emailaddress"
+      ],
+      [
+        "delete_emailaddress",
+        "account",
+        "emailaddress"
+      ],
+      [
+        "view_emailaddress",
+        "account",
+        "emailaddress"
+      ],
+      [
+        "add_emailconfirmation",
+        "account",
+        "emailconfirmation"
+      ],
+      [
+        "change_emailconfirmation",
+        "account",
+        "emailconfirmation"
+      ],
+      [
+        "delete_emailconfirmation",
+        "account",
+        "emailconfirmation"
+      ],
+      [
+        "view_emailconfirmation",
+        "account",
+        "emailconfirmation"
+      ],
+      [
+        "add_logentry",
+        "admin",
+        "logentry"
+      ],
+      [
+        "change_logentry",
+        "admin",
+        "logentry"
+      ],
+      [
+        "delete_logentry",
+        "admin",
+        "logentry"
+      ],
+      [
+        "view_logentry",
+        "admin",
+        "logentry"
+      ],
+      [
+        "add_group",
+        "auth",
+        "group"
+      ],
+      [
+        "change_group",
+        "auth",
+        "group"
+      ],
+      [
+        "delete_group",
+        "auth",
+        "group"
+      ],
+      [
+        "view_group",
+        "auth",
+        "group"
+      ],
+      [
+        "add_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "change_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "delete_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "view_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "add_user",
+        "auth",
+        "user"
+      ],
+      [
+        "change_user",
+        "auth",
+        "user"
+      ],
+      [
+        "delete_user",
+        "auth",
+        "user"
+      ],
+      [
+        "view_user",
+        "auth",
+        "user"
+      ],
+      [
+        "add_cliente",
+        "clientes",
+        "cliente"
+      ],
+      [
+        "change_cliente",
+        "clientes",
+        "cliente"
+      ],
+      [
+        "delete_cliente",
+        "clientes",
+        "cliente"
+      ],
+      [
+        "view_cliente",
+        "clientes",
+        "cliente"
+      ],
+      [
+        "add_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "change_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "delete_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "view_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "add_movimientostock",
+        "productos",
+        "movimientostock"
+      ],
+      [
+        "change_movimientostock",
+        "productos",
+        "movimientostock"
+      ],
+      [
+        "delete_movimientostock",
+        "productos",
+        "movimientostock"
+      ],
+      [
+        "view_movimientostock",
+        "productos",
+        "movimientostock"
+      ],
+      [
+        "add_producto",
+        "productos",
+        "producto"
+      ],
+      [
+        "change_producto",
+        "productos",
+        "producto"
+      ],
+      [
+        "delete_producto",
+        "productos",
+        "producto"
+      ],
+      [
+        "view_producto",
+        "productos",
+        "producto"
+      ],
+      [
+        "add_session",
+        "sessions",
+        "session"
+      ],
+      [
+        "change_session",
+        "sessions",
+        "session"
+      ],
+      [
+        "delete_session",
+        "sessions",
+        "session"
+      ],
+      [
+        "view_session",
+        "sessions",
+        "session"
+      ],
+      [
+        "add_site",
+        "sites",
+        "site"
+      ],
+      [
+        "change_site",
+        "sites",
+        "site"
+      ],
+      [
+        "delete_site",
+        "sites",
+        "site"
+      ],
+      [
+        "view_site",
+        "sites",
+        "site"
+      ],
+      [
+        "add_socialaccount",
+        "socialaccount",
+        "socialaccount"
+      ],
+      [
+        "change_socialaccount",
+        "socialaccount",
+        "socialaccount"
+      ],
+      [
+        "delete_socialaccount",
+        "socialaccount",
+        "socialaccount"
+      ],
+      [
+        "view_socialaccount",
+        "socialaccount",
+        "socialaccount"
+      ],
+      [
+        "add_socialapp",
+        "socialaccount",
+        "socialapp"
+      ],
+      [
+        "change_socialapp",
+        "socialaccount",
+        "socialapp"
+      ],
+      [
+        "delete_socialapp",
+        "socialaccount",
+        "socialapp"
+      ],
+      [
+        "view_socialapp",
+        "socialaccount",
+        "socialapp"
+      ],
+      [
+        "add_socialtoken",
+        "socialaccount",
+        "socialtoken"
+      ],
+      [
+        "change_socialtoken",
+        "socialaccount",
+        "socialtoken"
+      ],
+      [
+        "delete_socialtoken",
+        "socialaccount",
+        "socialtoken"
+      ],
+      [
+        "view_socialtoken",
+        "socialaccount",
+        "socialtoken"
+      ],
+      [
+        "add_itemventa",
+        "ventas",
+        "itemventa"
+      ],
+      [
+        "change_itemventa",
+        "ventas",
+        "itemventa"
+      ],
+      [
+        "delete_itemventa",
+        "ventas",
+        "itemventa"
+      ],
+      [
+        "view_itemventa",
+        "ventas",
+        "itemventa"
+      ],
+      [
+        "add_venta",
+        "ventas",
+        "venta"
+      ],
+      [
+        "change_venta",
+        "ventas",
+        "venta"
+      ],
+      [
+        "delete_venta",
+        "ventas",
+        "venta"
+      ],
+      [
+        "view_venta",
+        "ventas",
+        "venta"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "stock",
+    "permissions": [
+      [
+        "add_movimientostock",
+        "productos",
+        "movimientostock"
+      ],
+      [
+        "change_movimientostock",
+        "productos",
+        "movimientostock"
+      ],
+      [
+        "delete_movimientostock",
+        "productos",
+        "movimientostock"
+      ],
+      [
+        "view_movimientostock",
+        "productos",
+        "movimientostock"
+      ],
+      [
+        "add_producto",
+        "productos",
+        "producto"
+      ],
+      [
+        "change_producto",
+        "productos",
+        "producto"
+      ],
+      [
+        "delete_producto",
+        "productos",
+        "producto"
+      ],
+      [
+        "view_producto",
+        "productos",
+        "producto"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "ventas",
+    "permissions": [
+      [
+        "add_cliente",
+        "clientes",
+        "cliente"
+      ],
+      [
+        "change_cliente",
+        "clientes",
+        "cliente"
+      ],
+      [
+        "delete_cliente",
+        "clientes",
+        "cliente"
+      ],
+      [
+        "view_cliente",
+        "clientes",
+        "cliente"
+      ],
+      [
+        "view_producto",
+        "productos",
+        "producto"
+      ],
+      [
+        "add_venta",
+        "ventas",
+        "venta"
+      ],
+      [
+        "change_venta",
+        "ventas",
+        "venta"
+      ],
+      [
+        "delete_venta",
+        "ventas",
+        "venta"
+      ],
+      [
+        "view_venta",
+        "ventas",
+        "venta"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$TWfmIyTCcKaFKFJ9C0OOzZ$j8fRAqcgzWhDuF5NeiK35NyX/mZ1G0+6utzsxB9Jpm0=",
+    "last_login": "2025-11-16T15:40:45.738Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "daniel.zambrana@itscordoba.edu.ar",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-11-16T13:46:11.031Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$DL5q9kBCP9E4RcSB2FsvXO$dl9sOIVbkHfOE6zUKtVi1m4AOuJXNkEcTD2tjECBnRU=",
+    "last_login": "2025-11-16T16:55:59.672Z",
+    "is_superuser": false,
+    "username": "stocker",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-16T13:54:01Z",
+    "groups": [
+      [
+        "stock"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$I7gaizOIRsB3uFEN7XblOg$0OCz44IQ3qs8zryb0dAJKjI2/u8S1d9ArLWAkYxrglQ=",
+    "last_login": "2025-11-16T16:38:49.652Z",
+    "is_superuser": false,
+    "username": "vendedor",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-16T13:55:02Z",
+    "groups": [
+      [
+        "ventas"
+      ]
+    ],
+    "user_permissions": []
+  }
+}
+]
